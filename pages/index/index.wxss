@@ -1,0 +1,110 @@
+.banners {
+  width: 100%;
+  height: 300rpx;
+}
+.banners image {
+  width: 100%;
+  height: 100%;
+}
+.nvaContainer {
+  display: flex;
+}
+.navContainer-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+}
+.nvaContainer .iconfont {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 100rpx;
+  background: rgb(240, 19, 19);
+  color: #fff;
+  font-size: 50rpx;
+  margin: 20rpx 0;
+}
+.nvaContainer text {
+  font-size: 26rpx;
+}
+.recommednContainer {
+  padding: 0 20rpx;
+}
+/* .recommednContainer .title {
+  font-size: 25rpx;
+  color: #666;
+}
+.recommednContainer .header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 30rpx;
+}
+.recommednContainer .header .more {
+  padding: 0 20rpx;
+  border: 2rpx solid #333;
+  border-radius: 20rpx;
+  font-size: 26rpx;
+  margin-bottom: 20rpx;
+} */
+/* 推荐内容区 */
+.recommendScroll {
+  display: flex;
+  height: 280rpx;
+}
+.scrollItem {
+  width: 200rpx;
+  margin-right: 10rpx;
+}
+.scrollItem image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 20rpx;
+}
+/* 多行文本溢出 */
+.scrollItem text {
+  font-size: 26rpx;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+.topList {
+  padding: 0 20rpx;
+}
+.topListSwiper {
+  height: 400rpx;
+}
+.swiperItem {
+  width: 96%;
+  background-color: #CCCCFF;
+}
+.swiperItem title {
+  font-size: 30rpx;
+  line-height: 80rpx;
+}
+.musicItem {
+  display: flex;
+  margin-top: 10rpx;
+}
+.musicItem image {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 10rpx;
+}
+.musicItem .count {
+  width: 100rpx;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+}
+.musicItem .musicName {
+  height: 100rpx;
+  line-height: 100rpx;
+  max-width: 400rpx;
+  white-space: nowarp;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
