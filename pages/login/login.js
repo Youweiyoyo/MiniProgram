@@ -44,7 +44,11 @@ Page({
         icon: 'error',
       })
     }
-    const loginResult = await request('/login/cellphone', { phone, password })
+    const loginResult = await request('/login/cellphone', {
+      phone,
+      password,
+      isLogin: true,
+    })
     console.log(loginResult)
     switch (loginResult.code) {
       case 200:
@@ -53,7 +57,7 @@ Page({
           icon: 'success',
         })
         // 保存用户数据到本地
-        wx.setStorageSync('userInfo', JSON.stringify(loginResult.profile) )
+        wx.setStorageSync('userInfo', JSON.stringify(loginResult.profile))
         break
       case 501:
         wx.showToast({

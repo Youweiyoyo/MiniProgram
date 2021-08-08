@@ -15,3 +15,16 @@
   font-size: 28rpx;
   color: #d43c33;
 }
+.navScroll {
+  display: flex;
+  white-space: nowrap;
+}
+.navItem {
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.current {
+  border-bottom: 4rpx solid #d43c33;
+}

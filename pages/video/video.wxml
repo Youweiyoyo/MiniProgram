@@ -1,7 +1,16 @@
 <view class="videoBox">
+  <!-- 头部区域 -->
   <view class="videoHeader">
     <image class="img" src="../../static/images/video/video.jpg"></image>
     <view class="search">搜索</view>
     <image class="img" src="../../static/images/logo.png"></image>
   </view>
+  <!-- 导航区域 -->
+  <scroll-view class="navScroll" scroll-x enable-flex>
+    <view class="navItem" wx:for="{{videoList}}" wx:for-item="videoListItem" wx:key="id" bindtap="nvaChang" data-id="{{videoListItem.id}}">
+      <view class="navText {{navId === videoListItem.id && 'current'}}">
+        {{videoListItem.name}}
+      </view>
+    </view>
+  </scroll-view>
 </view>

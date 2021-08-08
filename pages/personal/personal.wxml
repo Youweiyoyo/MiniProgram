@@ -48,7 +48,7 @@
         <text class="title">最近播放</text>
         <!-- 最近播放记录 -->
         <scroll-view scroll-x class="recentScroll" enable-flex wx:if="{{playRecordListData.length}}">
-          <view class="recentItem" wx:for="{{playRecordListData}}" wx:for-item="playRecordItem" wx:key="{{id}}">
+          <view class="recentItem" wx:for="{{playRecordListData}}" wx:for-item="playRecordItem" wx:key="id">
             <image src="{{playRecordItem.song.al.picUrl}}"></image>
           </view>
         </scroll-view>
