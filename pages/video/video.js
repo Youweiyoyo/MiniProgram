@@ -8,6 +8,7 @@ Page({
     videoList: [], // 导航标签
     navId: '',
     videoData: [], // 列表区域
+    videoId: '',
   },
 
   /**
@@ -60,9 +61,13 @@ Page({
    * 视频暂停/播放时触发
    */
   handleplay(event) {
+    // 设计模式：单例模式
     let vid = event.currentTarget.id
-    this.vid !== vid && this.videoContext && this.videoContext.stop()
-    this.vid = vid
+    // this.vid !== vid && this.videoContext && this.videoContext.stop()
+    // this.vid = vid
+    this.setData({
+      videoId: vid,
+    })
     this.videoContext = wx.createVideoContext(vid)
   },
   /**

@@ -16,7 +16,8 @@
   <!-- 主体 -->
   <scroll-view class="videoScrool" scroll-x>
     <view class="videoItem" wx:for="{{videoData}}" wx:for-item="videoData" wx:key="id">
-      <video src="{{videoData.data.urlInfo.url}}" show-center-play-btn bindplay="handleplay" id="{{videoData.data.vid}}"></video>
+      <video wx:if="{{videoId === videoData.data.vid}}" object-fit="fill" autoplay src="{{videoData.data.urlInfo.url}}" class="common" show-center-play-btn bindplay="handleplay" id="{{videoData.data.vid}}" poster="{{videoData.data.coverUrl}}"></video>
+      <image wx:else class="common" src="{{videoData.data.coverUrl}}" id="{{videoData.data.vid}}" bindtap="handleplay"></image>
       <view class="content">{{videoData.data.title}}</view>
       <view class="footer">
         <image class="avatar" src="{{videoData.data.creator.avatarUrl}}"></image>
