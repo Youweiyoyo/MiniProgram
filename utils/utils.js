@@ -14,7 +14,7 @@ export default function request(url, data = {}, method = 'GET') {
       },
       success: (res) => {
         if (data.isLogin) {
-          wx.setStorage({
+          wx.setStorage({ 
             key: 'cookies',
             data: res.cookies,
           })

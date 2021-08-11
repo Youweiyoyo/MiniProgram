@@ -13,4 +13,28 @@
       </view>
     </view>
   </scroll-view>
+  <!-- 主体 -->
+  <scroll-view class="videoScrool" scroll-x>
+    <view class="videoItem" wx:for="{{videoData}}" wx:for-item="videoData" wx:key="id">
+      <video src="{{videoData.data.urlInfo.url}}"></video>
+      <view class="content">{{videoData.data.title}}</view>
+      <view class="footer">
+        <image class="avatar" src="{{videoData.data.creator.avatarUrl}}"></image>
+        <text class="nickName">{{ivideoDatatem.data.creator.nickname}}</text>
+        <view class="comments_praised">
+          <text class="item">
+            <text class="iconfont icon-tubiao-"></text>
+            <text class="count">{{videoData.data.praisedCount}}</text>
+          </text>
+          <text class="item">
+            <text class="iconfont icon-aixin"></text>
+            <text class="count">{{videoData.data.commentCount}}</text>
+          </text>
+          <button open-type="share" class="item btn">
+            <text class="iconfont icon-dian"></text>
+          </button>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
 </view>

@@ -5,8 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    videoList: [],
+    videoList: [], // 导航标签
     navId: '',
+    videoData: [], // 列表区域
   },
 
   /**
@@ -32,7 +33,13 @@ Page({
    */
   async getVideoGroup(id) {
     const result = await request('/video/group', { id: id })
-    console.log(result)
+    result.datas.map((item, index) => {
+      item.id = index
+      return item
+    })
+    this.setData({
+      videoData: result.datas,
+    })
   },
   /**
    * 点击 nav 的事件
