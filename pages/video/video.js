@@ -33,7 +33,8 @@ Page({
    */
   async getVideoGroup(id) {
     const result = await request('/video/group', { id: id })
-    result.datas.map((item, index) => {
+    wx.hideLoading()
+    result.datas?.map((item, index) => {
       item.id = index
       return item
     })
@@ -45,10 +46,24 @@ Page({
    * 点击 nav 的事件
    */
   nvaChang(event) {
-    console.log(event, '2222')
     this.setData({
       navId: event.currentTarget.dataset.id,
+      videoData: [],
     })
+    wx.showLoading({
+      title: '正在加载',
+      mask: true,
+    })
+    this.getVideoGroup(this.data.navId)
+  },
+  /**
+   * 视频暂停/播放时触发
+   */
+  handleplay(event) {
+    let vid = event.currentTarget.id
+    this.vid !== vid && this.videoContext && this.videoContext.stop()
+    this.vid = vid
+    this.videoContext = wx.createVideoContext(vid)
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

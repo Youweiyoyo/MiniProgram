@@ -6,8 +6,8 @@
     <image class="img" src="../../static/images/logo.png"></image>
   </view>
   <!-- 导航区域 -->
-  <scroll-view class="navScroll" scroll-x enable-flex>
-    <view class="navItem" wx:for="{{videoList}}" wx:for-item="videoListItem" wx:key="id" bindtap="nvaChang" data-id="{{videoListItem.id}}">
+  <scroll-view class="navScroll" scroll-x enable-flex scroll-into-view="{{'scroll' + navId}}" scroll-with-animation>
+    <view class="navItem" id="{{'scroll' + videoListItem.id}}" wx:for="{{videoList}}" wx:for-item="videoListItem" wx:key="id" bindtap="nvaChang" data-id="{{videoListItem.id}}">
       <view class="navText {{navId === videoListItem.id && 'current'}}">
         {{videoListItem.name}}
       </view>
@@ -16,7 +16,7 @@
   <!-- 主体 -->
   <scroll-view class="videoScrool" scroll-x>
     <view class="videoItem" wx:for="{{videoData}}" wx:for-item="videoData" wx:key="id">
-      <video src="{{videoData.data.urlInfo.url}}"></video>
+      <video src="{{videoData.data.urlInfo.url}}" show-center-play-btn bindplay="handleplay" id="{{videoData.data.vid}}"></video>
       <view class="content">{{videoData.data.title}}</view>
       <view class="footer">
         <image class="avatar" src="{{videoData.data.creator.avatarUrl}}"></image>
