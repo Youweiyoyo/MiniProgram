@@ -80,7 +80,6 @@ Page({
    * 跳转到指定播放的指定时间
    */
   handletap(event) {
-    console.log(event, '222')
     // 拿到每次点开视频的播放时间与对应的id值
     let videoUpdateObj = {
       vid: event.currentTarget.id,
@@ -98,6 +97,19 @@ Page({
       // 否则就 push 新的视频对象
       videoUpdateList.push(videoUpdateObj)
     }
+    this.setData({
+      videoUpdateList,
+    })
+  },
+  /**
+   * 播放结束的回调
+   */
+  endTime(event) {
+    let { videoUpdateList } = this.data
+    let vidIndex = videoUpdateList.findIndex((item) => {
+      item.vid === event.currentTarget.id
+    })
+    videoUpdateList.splice(vidIndex, 1)
     this.setData({
       videoUpdateList,
     })
