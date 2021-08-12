@@ -9,6 +9,7 @@ Page({
     navId: '',
     videoData: [], // 列表区域
     videoId: '',
+    videoUpdateList: [], // 视频播放时间更新后的数组
   },
 
   /**
@@ -68,7 +69,38 @@ Page({
     this.setData({
       videoId: vid,
     })
+    //  Video 组件的上下文赋值
     this.videoContext = wx.createVideoContext(vid)
+    // 判断视频是否有播放记录
+    let { videoUpdateList } = this.data
+    let videoPlayItem = videoUpdateList.find((item) => item.vid === vid)
+    videoPlayItem && this.videoContext.seek(videoPlayItem.currentTime)
+  },
+  /**
+   * 跳转到指定播放的指定时间
+   */
+  handletap(event) {
+    console.log(event, '222')
+    // 拿到每次点开视频的播放时间与对应的id值
+    let videoUpdateObj = {
+      vid: event.currentTarget.id,
+      currentTime: event.detail.currentTime,
+    }
+    let { videoUpdateList } = this.data
+    // 遍历数组 拿到数组中与每次点开的视频 id 一样的视频
+    let videoUpdateItem = videoUpdateList.find(
+      (item) => item.vid === videoUpdateObj.vid
+    )
+    // 判断如果已经点开的视频存在于数组中就让该视频的播放时间重新赋值
+    if (videoUpdateItem) {
+      videoUpdateItem.currentTime = event.detail.currentTime
+    } else {
+      // 否则就 push 新的视频对象
+      videoUpdateList.push(videoUpdateObj)
+    }
+    this.setData({
+      videoUpdateList,
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
