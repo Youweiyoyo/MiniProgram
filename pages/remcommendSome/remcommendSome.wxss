@@ -1,0 +1,73 @@
+.remcommendSome {
+  position: relative;
+}
+.remcommendSome .header {
+  width: 100%;
+  height: 300rpx;
+}
+.remcommendSome .header .image {
+  width: 100%;
+  height: 100%;
+}
+.remcommendSome .header .text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300rpx;
+  height: 100rpx;
+  margin-left: -150rpx;
+  margin-top: -50rpx;
+  text-align: center;
+  line-height: 100rpx;
+  color: #fff;
+  font-size: 40rpx;
+}
+.ListContainer {
+  position: relative;
+  top: -20rpx;
+  padding: 0 20rpx;
+  border-radius: 30rpx;
+  background-color: #fff;
+}
+.ListContainer .ListHeader {
+  display: flex;
+  justify-content: space-between;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.ScrollList {
+  height: calc(100vh - 380rpx);
+}
+/* 列表样式区域 */
+.scrollItem {
+  display: flex;
+  position: relative;
+  margin-bottom: 20rpx;
+}
+.ScrollList .scrollItem image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 8rpx;
+}
+.scrollItem .MusiceInfo {
+  display: flex;
+  flex-direction: column;
+  font-size: 20rpx;
+  margin-left: 20rpx;
+}
+.scrollItem .MusiceInfo text {
+  max-width: 400rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.scrollItem .iconfont {
+  position: absolute;
+  width: 80rpx;
+  height: 80rpx;
+  right: 0;
+  text-align: right;
+  line-height: 80rpx;
+}

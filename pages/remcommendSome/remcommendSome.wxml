@@ -1,0 +1,116 @@
+<view class="remcommendSome">
+  <!-- 头部区域 -->
+  <view class="header">
+    <image class="image" src="../../static/images/recommendSong/recommendSong.jpg"></image>
+    <view class="text">
+      <text>{{date}} /</text>
+      <text>{{mount}}</text>
+    </view>
+  </view>
+  <!-- 列表区域 -->
+  <view class="ListContainer">
+    <view class="ListHeader">
+      <text>播放全部</text>
+      <text>多选</text>
+    </view>
+    <!-- 列表区域 -->
+    <scroll-view class="ScrollList" scroll-Y>
+      <view class="scrollItem">
+        <image class="" src="../../static/images/nvsheng.jpg"></image>
+        <view class="MusiceInfo">
+          <text class="MusiceName">《光辉岁月》</text>
+          <text class="Musiceother">beyond</text>
+        </view>
+        <view class="iconfont icon-gengduo"></view>
+      </view>
+      <view class="scrollItem">
+        <image class="" src="../../static/images/nvsheng.jpg"></image>
+        <view class="MusiceInfo">
+          <text class="MusiceName">《光辉岁月》</text>
+          <text class="Musiceother">beyond</text>
+        </view>
+        <view class="iconfont icon-gengduo"></view>
+      </view>
+      <view class="scrollItem">
+        <image class="" src="../../static/images/nvsheng.jpg"></image>
+        <view class="MusiceInfo">
+          <text class="MusiceName">《光辉岁月》</text>
+          <text class="Musiceother">beyond</text>
+        </view>
+        <view class="iconfont icon-gengduo"></view>
+      </view>
+      <view class="scrollItem">
+        <image class="" src="../../static/images/nvsheng.jpg"></image>
+        <view class="MusiceInfo">
+          <text class="MusiceName">《光辉岁月》</text>
+          <text class="Musiceother">beyond</text>
+        </view>
+        <view class="iconfont icon-gengduo"></view>
+      </view>
+      <view class="scrollItem">
+        <image class="" src="../../static/images/nvsheng.jpg"></image>
+        <view class="MusiceInfo">
+          <text class="MusiceName">《光辉岁月》</text>
+          <text class="Musiceother">beyond</text>
+        </view>
+        <view class="iconfont icon-gengduo"></view>
+      </view>
+      <view class="scrollItem">
+        <image class="" src="../../static/images/nvsheng.jpg"></image>
+        <view class="MusiceInfo">
+          <text class="MusiceName">《光辉岁月》</text>
+          <text class="Musiceother">beyond</text>
+        </view>
+        <view class="iconfont icon-gengduo"></view>
+      </view>
+      <view class="scrollItem">
+        <image class="" src="../../static/images/nvsheng.jpg"></image>
+        <view class="MusiceInfo">
+          <text class="MusiceName">《光辉岁月》</text>
+          <text class="Musiceother">beyond</text>
+        </view>
+        <view class="iconfont icon-gengduo"></view>
+      </view>
+      <view class="scrollItem">
+        <image class="" src="../../static/images/nvsheng.jpg"></image>
+        <view class="MusiceInfo">
+          <text class="MusiceName">《光辉岁月》</text>
+          <text class="Musiceother">beyond</text>
+        </view>
+        <view class="iconfont icon-gengduo"></view>
+      </view>
+      <view class="scrollItem">
+        <image class="" src="../../static/images/nvsheng.jpg"></image>
+        <view class="MusiceInfo">
+          <text class="MusiceName">《光辉岁月》</text>
+          <text class="Musiceother">beyond</text>
+        </view>
+        <view class="iconfont icon-gengduo"></view>
+      </view>
+      <view class="scrollItem">
+        <image class="" src="../../static/images/nvsheng.jpg"></image>
+        <view class="MusiceInfo">
+          <text class="MusiceName">《光辉岁月》</text>
+          <text class="Musiceother">beyond</text>
+        </view>
+        <view class="iconfont icon-gengduo"></view>
+      </view>
+      <view class="scrollItem">
+        <image class="" src="../../static/images/nvsheng.jpg"></image>
+        <view class="MusiceInfo">
+          <text class="MusiceName">《光辉岁月》</text>
+          <text class="Musiceother">beyond</text>
+        </view>
+        <view class="iconfont icon-gengduo"></view>
+      </view>
+      <view class="scrollItem">
+        <image class="" src="../../static/images/nvsheng.jpg"></image>
+        <view class="MusiceInfo">
+          <text class="MusiceName">《光辉岁月》</text>
+          <text class="Musiceother">beyond</text>
+        </view>
+        <view class="iconfont icon-gengduo"></view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
