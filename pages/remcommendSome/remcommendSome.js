@@ -1,4 +1,4 @@
-// pages/remcommendSome/remcommendSome.js
+import request from '../../utils/utils'
 Page({
   /**
    * 页面的初始数据
@@ -6,6 +6,7 @@ Page({
   data: {
     date: '',
     mount: '',
+    Recommend: [],
   },
 
   /**
@@ -15,6 +16,28 @@ Page({
     this.setData({
       date: new Date().getDate(),
       mount: new Date().getMonth() + 1,
+    })
+    const userInfo = wx.getStorageSync('userInfo')
+    if (!userInfo) {
+      wx.showToast({
+        title: '请先登录',
+        icon: none,
+        success: () => {
+          wx.reLaunch({
+            url: '/pages/login/login',
+          })
+        },
+      })
+    }
+    this.getEveryDayRecommendMusic()
+  },
+  /**
+   * 获取每日推荐歌曲
+   */
+  async getEveryDayRecommendMusic() {
+    const { recommend: res } = await request('/recommend/songs')
+    this.setData({
+      Recommend: res,
     })
   },
 
