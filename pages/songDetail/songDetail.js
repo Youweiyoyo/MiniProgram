@@ -5,13 +5,31 @@ Page({
    */
   data: {
     isPlay: false,
+    musicInfo: {},
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {},
-
+  onLoad: function (options) {
+    const eventChannel = this.getOpenerEventChannel()
+    eventChannel.on('musicInfo', (res) => {
+      this.setData({
+        musicInfo: res,
+      })
+    })
+    wx.setNavigationBarTitle({
+      title: this.data.musicInfo.name
+    })
+  },
+  /**
+   * 点击播放
+   */
+  isPlay() {
+    this.setData({
+      isPlay: !this.data.isPlay,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

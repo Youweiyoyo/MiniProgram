@@ -40,7 +40,18 @@ Page({
       Recommend: res,
     })
   },
-
+  /**
+   * 跳转到播放界面
+   */
+  toPlayPage(event) {
+    let { song } = event.currentTarget.dataset
+    wx.navigateTo({
+      url: '/pages/songDetail/songDetail?musicInfo',
+      success: (res) => {
+        res.eventChannel.emit('musicInfo', song)
+      },
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

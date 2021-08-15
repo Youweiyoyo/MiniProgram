@@ -56,3 +56,22 @@
   height: 370rpx;
   border-radius: 50%;
 }
+.musicControl {
+  position: absolute;
+  bottom: 40rpx;
+  width: 100%;
+  display: flex;
+  border-top: 2rpx solid #fff;
+  justify-content: space-between;
+  align-items: center;
+}
+.musicControl text {
+  margin-top: 20rpx;
+  width: 20%;
+  text-align: center;
+  font-size: 60rpx;
+  color: #fff;
+}
+.musicControl .big {
+  font-size: 80rpx;
+}

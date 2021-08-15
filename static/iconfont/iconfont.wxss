@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'iconfont'; /* Project id 2710054 */
-  src: url('//at.alicdn.com/t/font_2710054_1ti5xy17e63.woff2?t=1628868548708')
+  src: url('//at.alicdn.com/t/font_2710054_r30u5zlmwea.woff2?t=1629037163260')
       format('woff2'),
-    url('//at.alicdn.com/t/font_2710054_1ti5xy17e63.woff?t=1628868548708')
+    url('//at.alicdn.com/t/font_2710054_r30u5zlmwea.woff?t=1629037163260')
       format('woff'),
-    url('//at.alicdn.com/t/font_2710054_1ti5xy17e63.ttf?t=1628868548708')
+    url('//at.alicdn.com/t/font_2710054_r30u5zlmwea.ttf?t=1629037163260')
       format('truetype');
 }
 
@@ -14,6 +14,30 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-bofang:before {
+  content: '\e737';
+}
+
+.icon-shangyishou:before {
+  content: '\e607';
+}
+
+.icon-xiayishou:before {
+  content: '\e62c';
+}
+
+.icon-liebiao:before {
+  content: '\e81c';
+}
+
+.icon-timeout:before {
+  content: '\eb18';
+}
+
+.icon-xunhuanbofang:before {
+  content: '\e6bf';
 }
 
 .icon-gengduo:before {
