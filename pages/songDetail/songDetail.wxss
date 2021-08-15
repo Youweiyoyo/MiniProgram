@@ -20,12 +20,29 @@
   left: 60rpx;
   width: 192rpx;
   height: 274rpx;
+  transform-origin: 40rpx 0;
+  transform: rotate(-20deg);
+  transition: transform 1s;
+}
+.needleRotate {
+  transform: rotate(0deg);
 }
 .discContainer {
   position: relative;
   top: -170rpx;
   width: 598rpx;
   height: 598rpx;
+}
+.disAnimation {
+  animation: dis 5s linear 1s infinite;
+}
+@keyframes dis {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 .dis {
   width: 100%;
