@@ -1,4 +1,5 @@
 import request from '../../utils/utils'
+const appInstance = getApp()
 Page({
   /**
    * 页面的初始数据
@@ -23,11 +24,22 @@ Page({
     wx.setNavigationBarTitle({
       title: this.data.musicInfo.name,
     })
+    // 判断当前页面是否有音乐在播放
+    if (
+      appInstance.globalData.isMusicPlay &&
+      appInstance.globalData.musicId === this.data.musicId
+    ) {
+      // 有 Id 存在表示当前有音乐在播放，修改状态
+      this.setData({
+        isPlay: true,
+      })
+    }
     // 创建控制背景音乐播放的实例
     this.backgroundMusic = wx.getBackgroundAudioManager()
     // 监听背景音频播放事件
     this.backgroundMusic.onPlay(() => {
       this.changePlay(true)
+      appInstance.globalData.musicId = this.data.musicId
     })
     // 监听系统背景音乐暂停事件
     this.backgroundMusic.onPause(() => {
@@ -45,6 +57,7 @@ Page({
     this.setData({
       isPlay,
     })
+    appInstance.globalData.isMusicPlay = isPlay
   },
   /**
    * 点击播放
