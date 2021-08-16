@@ -1,4 +1,4 @@
-// pages/songDetail/songDetail.js
+import request from '../../utils/utils'
 Page({
   /**
    * 页面的初始数据
@@ -6,6 +6,7 @@ Page({
   data: {
     isPlay: false,
     musicInfo: {},
+    musicId: '',
   },
 
   /**
@@ -16,10 +17,33 @@ Page({
     eventChannel.on('musicInfo', (res) => {
       this.setData({
         musicInfo: res,
+        musicId: res.id,
       })
     })
     wx.setNavigationBarTitle({
-      title: this.data.musicInfo.name
+      title: this.data.musicInfo.name,
+    })
+    // 创建控制背景音乐播放的实例
+    this.backgroundMusic = wx.getBackgroundAudioManager()
+    // 监听背景音频播放事件
+    this.backgroundMusic.onPlay(() => {
+      this.changePlay(true)
+    })
+    // 监听系统背景音乐暂停事件
+    this.backgroundMusic.onPause(() => {
+      this.changePlay(false)
+    })
+    // 监听系统背景音乐停止事件
+    this.backgroundMusic.onStop(() => {
+      this.changePlay(false)
+    })
+  },
+  /**
+   * 用于更改 isPlay 的方法
+   * */
+  changePlay(isPlay) {
+    this.setData({
+      isPlay,
     })
   },
   /**
@@ -29,6 +53,24 @@ Page({
     this.setData({
       isPlay: !this.data.isPlay,
     })
+    this.musicControl()
+  },
+  /**
+   * 控制音乐播放暂停
+   */
+  async musicControl() {
+    if (this.data.isPlay) {
+      // 获取音乐播放链接
+      const { data: res } = await request('/song/url', {
+        id: this.data.musicId,
+      })
+      let [musicLink] = res
+      this.backgroundMusic.src = musicLink.url
+      this.backgroundMusic.title = this.data.musicInfo.name
+    } else {
+      // 暂停
+      this.backgroundMusic.pause()
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
