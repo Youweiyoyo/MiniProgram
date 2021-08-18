@@ -15,7 +15,7 @@
     </view>
     <!-- 列表区域 -->
     <scroll-view class="ScrollList">
-      <view class="scrollItem" scroll-Y wx:for="{{Recommend}}" wx:for-item="RecommendItem" wx:key="id" data-song="{{RecommendItem}}" bindtap="toPlayPage">
+      <view class="scrollItem" scroll-Y wx:for="{{Recommend}}" wx:for-item="RecommendItem" wx:key="id" data-song="{{RecommendItem}}" data-index="{{index}}" bindtap="toPlayPage">
         <image class="" src="{{RecommendItem.album.picUrl}}"></image>
         <view class="MusiceInfo">
           <text class="MusiceName">{{RecommendItem.name}}</text>

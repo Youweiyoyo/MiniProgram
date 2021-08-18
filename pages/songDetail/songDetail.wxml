@@ -9,9 +9,9 @@
   <!-- 播放按钮区 -->
   <view class="musicControl">
     <text class="iconfont icon-xunhuanbofang"></text>
-    <text class="iconfont icon-shangyishou"></text>
+    <text class="iconfont icon-shangyishou" data-playtype="pre" bindtap="skipPlay"></text>
     <text class="iconfont {{isPlay? 'icon-timeout':'icon-bofang'}}  big" bindtap="isPlay"></text>
-    <text class="iconfont icon-xiayishou"></text>
+    <text class="iconfont icon-xiayishou" data-playtype="next" bindtap="skipPlay"></text>
     <text class="iconfont icon-liebiao"></text>
   </view>
 </view>

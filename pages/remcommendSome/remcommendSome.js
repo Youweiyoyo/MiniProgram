@@ -1,12 +1,14 @@
 import request from '../../utils/utils'
+import PubSub, { publish } from 'pubsub-js'
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    date: '',
     mount: '',
     Recommend: [],
+    data: '',
+    musicIndex: '',
   },
 
   /**
@@ -30,6 +32,29 @@ Page({
       })
     }
     this.getEveryDayRecommendMusic()
+    // 订阅来自播放页面发布的消息
+    PubSub.subscribe('switchType', (msg, data) => {
+      // msg 监听的事件名称
+      // data 传递的参数
+      let { Recommend, musicIndex } = this.data
+      if (data === 'pre') {
+        // 判断临界值
+        musicIndex === 0 && (musicIndex = Recommend.length)
+        // 上一首
+        musicIndex = musicIndex - 1
+      } else {
+        // 判断临界值
+        musicIndex === Recommend.length - 1 && (musicIndex = -1)
+        // 下一首
+        musicIndex = musicIndex + 1
+      }
+      // 点击上一首或者下一首后更下下标
+      this.setData({
+        musicIndex,
+      })
+      let musicCurrent = Recommend[musicIndex]
+      PubSub.publish('musicCurrent', musicCurrent)
+    })
   },
   /**
    * 获取每日推荐歌曲
@@ -44,7 +69,10 @@ Page({
    * 跳转到播放界面
    */
   toPlayPage(event) {
-    let { song } = event.currentTarget.dataset
+    let { song, index } = event.currentTarget.dataset
+    this.setData({
+      musicIndex: index,
+    })
     wx.navigateTo({
       url: '/pages/songDetail/songDetail?musicInfo',
       success: (res) => {

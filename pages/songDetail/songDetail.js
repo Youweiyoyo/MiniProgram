@@ -1,4 +1,5 @@
 import request from '../../utils/utils'
+import PubSub from 'pubsub-js'
 const appInstance = getApp()
 Page({
   /**
@@ -66,13 +67,13 @@ Page({
     this.setData({
       isPlay: !this.data.isPlay,
     })
-    this.musicControl()
+    this.musicControl(this.data.isPlay)
   },
   /**
    * 控制音乐播放暂停
    */
-  async musicControl() {
-    if (this.data.isPlay) {
+  async musicControl(isPlay) {
+    if (isPlay) {
       // 获取音乐播放链接
       const { data: res } = await request('/song/url', {
         id: this.data.musicId,
@@ -85,6 +86,32 @@ Page({
       this.backgroundMusic.pause()
     }
   },
+  /**
+   * 上一首或者下一首音乐播放
+   */
+  skipPlay(event) {
+    const { playtype } = event.currentTarget.dataset
+    // 切歌前先关闭当前播放的音乐
+    this.backgroundMusic.pause()
+    // 订阅推荐页面传递回来的歌曲信息
+    PubSub.subscribe('musicCurrent', (msg, data) => {
+      this.setData({
+        musicInfo: data,
+        musicId: data.id,
+      })
+      // 动态设置标题
+      wx.setNavigationBarTitle({
+        title: this.data.musicInfo.name,
+      })
+      // 切歌自动播放
+      this.musicControl(true)
+      //取消订阅
+      PubSub.unsubscribe('musicCurrent')
+    })
+    // 发布消息给推荐歌曲页面
+    PubSub.publish('switchType', playtype)
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
