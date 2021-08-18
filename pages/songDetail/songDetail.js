@@ -9,6 +9,7 @@ Page({
     isPlay: false,
     musicInfo: {},
     musicId: '',
+    musicLink: '',
   },
 
   /**
@@ -67,19 +68,25 @@ Page({
     this.setData({
       isPlay: !this.data.isPlay,
     })
-    this.musicControl(this.data.isPlay)
+    this.musicControl(this.data.isPlay, this.data.musicLink)
   },
   /**
    * 控制音乐播放暂停
    */
-  async musicControl(isPlay) {
+  async musicControl(isPlay, musicLink) {
     if (isPlay) {
-      // 获取音乐播放链接
-      const { data: res } = await request('/song/url', {
-        id: this.data.musicId,
-      })
-      let [musicLink] = res
-      this.backgroundMusic.src = musicLink.url
+      if (!musicLink) {
+        // 获取音乐播放链接
+        const { data: res } = await request('/song/url', {
+          id: this.data.musicId,
+        })
+        // 不声明变量直接给传入的 musicLink 进行赋值
+        musicLink = res[0].url
+        this.setData({
+          musicLink,
+        })
+      }
+      this.backgroundMusic.src = musicLink
       this.backgroundMusic.title = this.data.musicInfo.name
     } else {
       // 暂停
