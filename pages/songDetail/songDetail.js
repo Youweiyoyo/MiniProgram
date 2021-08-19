@@ -13,6 +13,7 @@ Page({
     musicLink: '',
     durationTime: '', // 音乐总时长
     currentTime: '00:00', // 当前播放时长
+    currentWidth: 0, // 播放进度
   },
 
   /**
@@ -55,12 +56,23 @@ Page({
     this.backgroundMusic.onStop(() => {
       this.changePlay(false)
     })
+    // 监听音乐自然播放结束
+    this.backgroundMusic.onEnded(() => {
+      // 切换至下一首,并且自动播放
+      PubSub.publish('switchType', 'next')
+      this.setData({
+        currentWidth: 0,
+      })
+    })
     // 监听当前播放进度实际
     this.backgroundMusic.onTimeUpdate(() => {
       this.setData({
         currentTime: moment(this.backgroundMusic.currentTime * 1000).format(
           'mm:ss'
         ),
+        currentWidth:
+          (this.backgroundMusic.currentTime / this.backgroundMusic.duration) *
+          100,
       })
     })
   },

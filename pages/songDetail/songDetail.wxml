@@ -10,7 +10,7 @@
   <view class="progressBar">
     <text class="">{{currentTime}}</text>
     <view class="barControl">
-      <view class="video_currentTime_bar">
+      <view class="video_currentTime_bar" style="width:{{currentWidth}}%">
         <!-- 小圆球 -->
         <view class="aBall"></view>
       </view>

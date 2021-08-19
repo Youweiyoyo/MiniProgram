@@ -94,7 +94,7 @@
 .video_currentTime_bar {
   position: absolute;
   inset: 0;
-  width: 100rpx;
+  width: 0rpx;
   height: 4rpx;
   z-index: 1;
   background-color: red;
