@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/remcommendSome/remcommendSome",
     "pages/songDetail/songDetail",
     "pages/personal/personal",
-    "pages/index/index",
     "pages/video/video",
     "pages/login/login"
   ],

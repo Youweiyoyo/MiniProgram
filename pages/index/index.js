@@ -8,7 +8,7 @@ Page({
   data: {
     bannerList: [],
     recommendMusicList: [],
-    topList: []
+    topList: [],
   },
 
   /**
@@ -26,15 +26,25 @@ Page({
     let index = 1
     let resultArr = []
     while (index < 6) {
-      const topListData = await request('/top/list',{idx: index++})
-      let topListItem = {name: topListData.playlist.name, tracks:topListData.playlist.tracks.slice(0,3)}
+      const topListData = await request('/top/list', { idx: index++ })
+      let topListItem = {
+        name: topListData.playlist.name,
+        tracks: topListData.playlist.tracks.slice(0, 3),
+      }
       resultArr.push(topListItem)
       this.setData({
-        topList: resultArr
+        topList: resultArr,
       })
     }
   },
-
+  /**
+   *  跳转到推荐页面
+   */
+  gotoRemcommend() {
+    wx.navigateTo({
+      url: '/pages/remcommendSome/remcommendSome',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

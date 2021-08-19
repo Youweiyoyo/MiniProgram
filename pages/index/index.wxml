@@ -7,7 +7,7 @@
   </swiper>
   <!-- 图标导航 -->
   <view class="nvaContainer">
-    <view class="navContainer-item">
+    <view class="navContainer-item" bindtap="gotoRemcommend">
       <text class="iconfont icon-tuijian1"></text>
       <text>每日推荐</text>
     </view>
