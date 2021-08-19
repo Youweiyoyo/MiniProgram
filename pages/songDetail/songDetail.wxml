@@ -6,6 +6,17 @@
     <image class="dis" src="../../static/images/song/disc.png"></image>
     <image class="MusicImg" src="{{musicInfo.album.picUrl}}"></image>
   </view>
+  <!-- 进度条区域 -->
+  <view class="progressBar">
+    <text class="">{{currentTime}}</text>
+    <view class="barControl">
+      <view class="video_currentTime_bar">
+        <!-- 小圆球 -->
+        <view class="aBall"></view>
+      </view>
+    </view>
+    <text class="">{{durationTime}}</text>
+  </view>
   <!-- 播放按钮区 -->
   <view class="musicControl">
     <text class="iconfont icon-xunhuanbofang"></text>

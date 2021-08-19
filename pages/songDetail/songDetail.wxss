@@ -75,3 +75,36 @@
 .musicControl .big {
   font-size: 80rpx;
 }
+/* 进度条区域 */
+.progressBar {
+  position: absolute;
+  bottom: 200rpx;
+  width: 640rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  display: flex;
+}
+.barControl {
+  position: relative;
+  width: 450rpx;
+  height: 4rpx;
+  background-color: rgba(0, 0, 0, 0.4);
+  margin: auto;
+}
+.video_currentTime_bar {
+  position: absolute;
+  inset: 0;
+  width: 100rpx;
+  height: 4rpx;
+  z-index: 1;
+  background-color: red;
+}
+.aBall {
+  position: absolute;
+  top: -8rpx;
+  right: -10rpx;
+  width: 20rpx;
+  height: 20rpx;
+  background-color: #fff;
+  border-radius: 50%;
+}

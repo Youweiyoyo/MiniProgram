@@ -1,5 +1,6 @@
 import request from '../../utils/utils'
 import PubSub from 'pubsub-js'
+import moment from 'moment'
 const appInstance = getApp()
 Page({
   /**
@@ -10,6 +11,8 @@ Page({
     musicInfo: {},
     musicId: '',
     musicLink: '',
+    durationTime: '', // 音乐总时长
+    currentTime: '00:00', // 当前播放时长
   },
 
   /**
@@ -21,6 +24,7 @@ Page({
       this.setData({
         musicInfo: res,
         musicId: res.id,
+        durationTime: moment(res.duration).format('mm:ss'),
       })
     })
     wx.setNavigationBarTitle({
@@ -50,6 +54,14 @@ Page({
     // 监听系统背景音乐停止事件
     this.backgroundMusic.onStop(() => {
       this.changePlay(false)
+    })
+    // 监听当前播放进度实际
+    this.backgroundMusic.onTimeUpdate(() => {
+      this.setData({
+        currentTime: moment(this.backgroundMusic.currentTime * 1000).format(
+          'mm:ss'
+        ),
+      })
     })
   },
   /**
