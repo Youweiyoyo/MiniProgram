@@ -3,7 +3,7 @@
   <view class="searchHead">
     <view class="searchInput">
       <text class="iconfont searchIcon icon-sousuo"></text>
-      <input type="text" placeholder="{{placeholderDefault}}" placeholder-class="input-placeholder" />
+      <input type="text" placeholder="{{placeholderDefault}}" placeholder-class="input-placeholder" bindinput="getSearchContent" />
     </view>
     <text class="cancel">取消</text>
   </view>
@@ -14,7 +14,7 @@
       <view class="hostItem" wx:for="{{hotList}}" wx:for-item="hotItem" wx:key="id">
         <text class="order">{{hotItem.id + 1 }}</text>
         <text>{{hotItem.searchWord}}</text>
-        <image class="hotIcon" src="{{hotItem.iconUrl}}"></image>
+        <image wx:if="{{hotItem.iconUrl}}" class="hotIcon" src="{{hotItem.iconUrl}}"></image>
       </view>
     </view>
   </view>

@@ -1,4 +1,5 @@
 import request from '../../utils/utils'
+let isSend = false
 Page({
   /**
    * 页面的初始数据
@@ -6,6 +7,8 @@ Page({
   data: {
     placeholderDefault: '', // 默认显示内容
     hotList: [], // 热搜榜
+    searchContent: '', // 搜索框内容
+    vagueSearchDataList: [], // 模糊查询到的数组
   },
 
   /**
@@ -36,6 +39,34 @@ Page({
     })
     this.setData({
       hotList: hotList,
+    })
+  },
+  /**
+   * 获取搜索表单内的内容
+   */
+  getSearchContent(event) {
+    this.setData({
+      searchContent: event.detail.value.trim(),
+    })
+    if (isSend) {
+      return
+    }
+    isSend = true
+    this.getVagueDataList()
+    setTimeout(() => {
+      isSend = false
+    }, 500)
+  },
+  /**
+   * 模糊查询
+   */
+  async getVagueDataList() {
+    const { result: res } = await request('/search', {
+      keywords: this.data.searchContent,
+      limit: 10,
+    })
+    this.setData({
+      vagueSearchDataList: res?.songs,
     })
   },
   /**
