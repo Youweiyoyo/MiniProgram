@@ -1,0 +1,21 @@
+<view class="searchPage">
+  <!-- head -->
+  <view class="searchHead">
+    <view class="searchInput">
+      <text class="iconfont searchIcon icon-sousuo"></text>
+      <input type="text" placeholder="{{placeholderDefault}}" placeholder-class="input-placeholder" />
+    </view>
+    <text class="cancel">取消</text>
+  </view>
+  <!-- hot -->
+  <view class="hotContainer">
+    <view class="title">热搜榜</view>
+    <view class="hotList">
+      <view class="hostItem" wx:for="{{hotList}}" wx:for-item="hotItem" wx:key="id">
+        <text class="order">{{hotItem.id + 1 }}</text>
+        <text>{{hotItem.searchWord}}</text>
+        <image class="hotIcon" src="{{hotItem.iconUrl}}"></image>
+      </view>
+    </view>
+  </view>
+</view>
