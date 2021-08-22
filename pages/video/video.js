@@ -104,6 +104,14 @@ Page({
     })
   },
   /**
+   * 跳转到搜索页面
+   */
+  gotoSearchPage() {
+    wx.navigateTo({
+      url: '/pages/search/search',
+    })
+  },
+  /**
    * 播放结束的回调
    */
   endTime(event) {

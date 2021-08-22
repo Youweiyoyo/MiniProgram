@@ -9,6 +9,7 @@ Page({
     hotList: [], // 热搜榜
     searchContent: '', // 搜索框内容
     vagueSearchDataList: [], // 模糊查询到的数组
+    historyList: [], // 搜索历史记录
   },
 
   /**
@@ -17,8 +18,19 @@ Page({
   onLoad: function (options) {
     this.getPlaceholderDefault()
     this.getHotList()
+    this.getSearchHistory()
   },
-
+  /**
+   * 获取本地存储中的搜索历史
+   */
+  async getSearchHistory() {
+    let historyList = wx.getStorageSync('searchHistory')
+    if (historyList) {
+      this.setData({
+        historyList,
+      })
+    }
+  },
   /**
    * 获取 input 输入框默认显示内容
    */
@@ -61,12 +73,54 @@ Page({
    * 模糊查询
    */
   async getVagueDataList() {
+    if (!this.data.searchContent) {
+      this.setData({
+        vagueSearchDataList: [],
+      })
+      return
+    }
+    let { historyList, searchContent } = this.data
     const { result: res } = await request('/search', {
-      keywords: this.data.searchContent,
+      keywords: searchContent,
       limit: 10,
     })
     this.setData({
-      vagueSearchDataList: res?.songs,
+      vagueSearchDataList: res.songs,
+    })
+    if (historyList.includes(searchContent)) {
+      historyList.splice(historyList.indexOf(searchContent), 1)
+    }
+    // 将搜索过的数据添加到 数组前面
+    historyList.unshift(searchContent)
+    this.setData({
+      historyList,
+    })
+    // 将历史数据存储到本地
+    wx.setStorageSync('searchHistory', historyList)
+  },
+  /**
+   * 清空文本框
+   */
+  clearSearch() {
+    this.setData({
+      searchContent: '',
+      vagueSearchDataList: [],
+    })
+  },
+  /**
+   * 清空历史搜索记录
+   */
+  deleteSearch() {
+    wx.showModal({
+      content: '是否删除？',
+      success: (res) => {
+        if (res.confirm) {
+          this.setData({
+            historyList: [],
+          })
+          wx.removeStorageSync('searchHistory')
+        }
+      },
     })
   },
   /**

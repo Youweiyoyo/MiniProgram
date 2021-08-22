@@ -29,6 +29,12 @@
   color: #ff0066;
   font-size: 28rpx;
 }
+.deleteIcon {
+  position: absolute;
+  top: 0;
+  right: 20rpx;
+  z-index: 5;
+}
 /* 热搜榜 */
 .hotContainer .title {
   font-size: 28rpx;
@@ -53,4 +59,47 @@
   width: 35rpx;
   height: 20rpx;
   margin-left: 10rpx;
+}
+/* 搜索区内容展示 */
+.showSearchContent {
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #d43c33;
+  font-size: 24rpx;
+  border-bottom: 2rpx solid #eee;
+}
+.searchItem {
+  display: flex;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.searchItem .content {
+  flex: 1;
+  margin-left: 20rpx;
+  border-bottom: 2rpx solid #eee;
+  font-size: 26rpx;
+}
+/* 搜索历史 */
+.history {
+  display: flex;
+  flex-wrap: wrap;
+}
+.historyTitle {
+  font-size: 28rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  margin-top: 10rpx;
+}
+.histContent {
+  height: 50rpx;
+  font-size: 26rpx;
+  background-color: #eee;
+  padding: 0 30rpx;
+  border-radius: 20rpx;
+  line-height: 50rpx;
+  margin: 10rpx;
+}
+.historyDelete {
+  margin-top: 20rpx;
+  margin-left: auto;
 }
