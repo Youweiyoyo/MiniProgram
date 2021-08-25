@@ -2,8 +2,6 @@
   "pages": [
     "pages/index/index",
     "pages/search/search",
-    "pages/remcommendSome/remcommendSome",
-    "pages/songDetail/songDetail",
     "pages/personal/personal",
     "pages/video/video",
     "pages/login/login"
@@ -40,5 +38,14 @@
       }
     ]
   },
-  "requiredBackgroundModes": ["audio", "location"]
+  "requiredBackgroundModes": ["audio", "location"],
+  "subPackages": [
+    {
+      "root": "songPackage",
+      "pages": [
+        "pages/remcommendSome/remcommendSome",
+        "pages/songDetail/songDetail"
+      ]
+    }
+  ]
 }

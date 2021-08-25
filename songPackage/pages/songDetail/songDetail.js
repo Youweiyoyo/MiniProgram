@@ -1,4 +1,4 @@
-import request from '../../utils/utils'
+import request from '../../../utils/utils'
 import PubSub from 'pubsub-js'
 import moment from 'moment'
 const appInstance = getApp()

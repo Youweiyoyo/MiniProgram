@@ -1,4 +1,4 @@
-import request from '../../utils/utils'
+import request from '../../../utils/utils'
 import PubSub, { publish } from 'pubsub-js'
 Page({
   /**
@@ -74,7 +74,7 @@ Page({
       musicIndex: index,
     })
     wx.navigateTo({
-      url: '/pages/songDetail/songDetail?musicInfo',
+      url: '/songPackage/pages/songDetail/songDetail?musicInfo',
       success: (res) => {
         res.eventChannel.emit('musicInfo', song)
       },

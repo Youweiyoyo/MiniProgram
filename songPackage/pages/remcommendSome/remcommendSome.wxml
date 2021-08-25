@@ -1,7 +1,7 @@
 <view class="remcommendSome">
   <!-- 头部区域 -->
   <view class="header">
-    <image class="image" src="../../static/images/recommendSong/recommendSong.jpg"></image>
+    <image class="image" src="../../../static/images/recommendSong/recommendSong.jpg"></image>
     <view class="text">
       <text>{{date}} /</text>
       <text>{{mount}}</text>

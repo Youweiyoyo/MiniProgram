@@ -1,9 +1,9 @@
 <view class="songDetailContainer">
   <view class="author">{{musicInfo.artists[0].name}}</view>
   <view class="circle"></view>
-  <image class="needle {{isPlay && 'needleRotate'}}" src="../../static/images/song/needle.png"></image>
+  <image class="needle {{isPlay && 'needleRotate'}}" src="../../../static/images/song/needle.png"></image>
   <view class="discContainer {{isPlay && 'disAnimation'}}">
-    <image class="dis" src="../../static/images/song/disc.png"></image>
+    <image class="dis" src="../../../static/images/song/disc.png"></image>
     <image class="MusicImg" src="{{musicInfo.album.picUrl}}"></image>
   </view>
   <!-- 进度条区域 -->

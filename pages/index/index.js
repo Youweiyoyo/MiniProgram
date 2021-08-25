@@ -42,7 +42,7 @@ Page({
    */
   gotoRemcommend() {
     wx.navigateTo({
-      url: '/pages/remcommendSome/remcommendSome',
+      url: '/songPackage/pages/remcommendSome/remcommendSome',
     })
   },
   /**
